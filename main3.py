@@ -113,10 +113,8 @@ def main(input_path, cv2_show=True, name_window=None):
 if __name__ == '__main__':
     input_path = "/storages/data/DATA/Video_Test/5555_17_3_action1.mp4"
     # input_path = "/home/vuong/Videos/test_phu.mp4"
-    main(input_path, cv2_show=True, name_window="window2")
 
-    # for i in range(3):
-    #     main(input_path, cv2_show=True, name_window="window" + str(i))
+    main(input_path, cv2_show=True, name_window="window2")
     # thread_1 = KThread(target=main, args=(input_path, True, "window1"))
     # thread_2 = KThread(target=main, args=(input_path, True, "window2"))
     # thread_3 = KThread(target=main, args=(input_path, True, "window3"))

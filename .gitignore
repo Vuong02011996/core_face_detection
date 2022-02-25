@@ -61,6 +61,5 @@ models/*
 output/*
 image_test/*
 core/main/fall_detection/Models
-models_local/head_detection/yolov5_detect/yolov5_detect_image.py
 requirements1.txt
 

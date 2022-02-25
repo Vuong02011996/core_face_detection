@@ -2,12 +2,10 @@ import sys
 import time
 
 sys.path.append("models_local/head_detection/yolov5_detect")
-# sys.path.append("../../core/models_local/head_detection/yolov5_detect")
 from models_local.head_detection.yolov5_detect.yolov5_detect_image import Y5Detect
 
 
 y5_model = Y5Detect(weights="models_local/head_detection/yolov5_detect/model_head/y5headbody_v2.pt")
-# y5_model = Y5Detect(weights="../../core/models_local/head_detection/yolov5_detect/model_head/y5headbody_v2.pt")
 class_names = y5_model.class_names
 
 

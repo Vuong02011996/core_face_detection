@@ -2,9 +2,10 @@ import time
 import cv2
 import numpy as np
 from mot_tracking import untils_track
-from head_detect import class_names
+# from head_detect import class_names
 from main_utils.draw import draw_boxes_tracking, draw_det_when_track, show_stream, draw_region
 
+class_names =['head', 'body']
 
 def drawing(cam, show_queue, show_all_queue, frame_final_queue):
     while cam.cap.isOpened():

@@ -43,7 +43,7 @@ class InfoCam(object):
         self.show_all = True
 
 
-def main(input_path, cv2_show=True, name_window=None):
+def main(input_path, y5_model, detect_face_bbox_head_batch, cv2_show=True, name_window=None):
     start_time = time.time()
     frame_detect_queue = Queue(maxsize=1)
     detections_queue = Queue(maxsize=1)
@@ -57,9 +57,9 @@ def main(input_path, cv2_show=True, name_window=None):
     # -------------------------------------------------------------------------
 
     thread1 = KThread(target=video_capture, args=(cam, frame_detect_queue))
-    thread2 = KThread(target=head_detect, args=(cam, frame_detect_queue, detections_queue))
+    thread2 = KThread(target=head_detect, args=(cam, frame_detect_queue, detections_queue, y5_model))
     thread3 = KThread(target=tracking, args=(cam, detections_queue, show_all_queue, head_bbox_queue))
-    thread4 = KThread(target=detect_face_bbox_head, args=(cam, head_bbox_queue, face_embedding_queue))
+    thread4 = KThread(target=detect_face_bbox_head, args=(cam, head_bbox_queue, face_embedding_queue, detect_face_bbox_head_batch))
     thread5 = KThread(target=get_face_features, args=(cam, face_embedding_queue, show_queue))
     # thread6 = KThread(target=matching_identity, args=(cam, matching_queue, database_queue, show_queue))
     # thread7 = KThread(target=export_data, args=(cam, database_queue, object_dal))

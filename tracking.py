@@ -1,10 +1,10 @@
 import numpy as np
 import time
-from head_detect import class_names
+# from head_detect import class_names
 from mot_tracking.mot_sort_tracker import Sort
 from mot_tracking import untils_track
 
-
+class_names =['head', 'body']
 mot_tracker = Sort(class_names)
 
 

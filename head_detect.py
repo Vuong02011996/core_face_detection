@@ -1,15 +1,15 @@
 import sys
 import time
 
-sys.path.append("models_local/head_detection/yolov5_detect")
-from models_local.head_detection.yolov5_detect.yolov5_detect_image import Y5Detect
+# sys.path.append("models_local/head_detection/yolov5_detect")
+# from models_local.head_detection.yolov5_detect.yolov5_detect_image import Y5Detect
+
+#
+# y5_model = Y5Detect(weights="models_local/head_detection/yolov5_detect/model_head/y5headbody_v2.pt")
+# class_names = y5_model.class_names
 
 
-y5_model = Y5Detect(weights="models_local/head_detection/yolov5_detect/model_head/y5headbody_v2.pt")
-class_names = y5_model.class_names
-
-
-def head_detect(cam, frame_detect_queue, detections_queue):
+def head_detect(cam, frame_detect_queue, detections_queue, y5_model):
     while cam.cap.isOpened():
         frame_rgb, frame_count = frame_detect_queue.get()
         start_time = time.time()

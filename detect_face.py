@@ -4,11 +4,11 @@ import sys
 import cv2
 
 from main_utils.box_utils import extend_bbox
-sys.path.append("models_local/face_detection/DSFDPytorchInference")
-from models_local.face_detection.face_test import detect_face_bbox_head_batch
+# sys.path.append("models_local/face_detection/DSFDPytorchInference")
+# from models_local.face_detection.face_test import detect_face_bbox_head_batch
 
 
-def detect_face_bbox_head(cam, head_bbox_queue, face_embedding_queue):
+def detect_face_bbox_head(cam, head_bbox_queue, face_embedding_queue, detect_face_bbox_head_batch):
     max_size_head = 200
     while cam.cap.isOpened():
 

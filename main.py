@@ -43,7 +43,7 @@ class InfoCam(object):
         self.show_all = True
 
 
-def main(input_path, y5_model, detect_face_bbox_head_batch, cv2_show=True, name_window=None):
+def main(input_path, y5_model, detect_face_bbox_head_batch, cv2_show=True, name_window=None, cam_name = None):
     start_time = time.time()
     frame_detect_queue = Queue(maxsize=1)
     detections_queue = Queue(maxsize=1)
@@ -87,21 +87,21 @@ def main(input_path, y5_model, detect_face_bbox_head_batch, cv2_show=True, name_
 
     while cam.cap.isOpened():
         image, frame_count = frame_final_queue.get()
-        print("frame_count: ", frame_count)
+        # print("frame_count: ", frame_count)
         image = cv2.resize(image, (500, 300))
-
-        if cv2_show:
-            if name_window is not None:
-                cv2.imshow(name_window, image)
-            else:
-                cv2.imshow('output_roll_call', image)
-            if cv2.waitKey(1) & 0xFF == ord("q"):
-                cv2.destroyWindow('output')
-                break
+        #
+        # if cv2_show:
+        #     if name_window is not None:
+        #         cv2.imshow(name_window, image)
+        #     else:
+        #         cv2.imshow('output_roll_call', image)
+        #     if cv2.waitKey(1) & 0xFF == ord("q"):
+        #         cv2.destroyWindow('output')
+        #         break
 
     total_time = time.time() - start_time
-    print("FPS video: ", cam.fps_video)
-    print("Total time: {}, Total frame: {}, FPS all process : {}".format(total_time, cam.total_frame_video,
+    print("FPS video:  ", cam.fps_video)
+    print(cam_name + "Total time: {}, Total frame: {}, FPS all process : {}".format(total_time, cam.total_frame_video,
                                                                          1 / (total_time / cam.total_frame_video)), )
 
     for t in thread_roll_call_manager:

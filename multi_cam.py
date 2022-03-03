@@ -51,8 +51,8 @@ def mult_cam_1():
 def mult_cam_3():
         jobs = []
         multiprocessing.set_start_method('spawn')
-        for i in range(4):
-            process = multiprocessing.Process(target=main1, args=(input_path, y5_model, detect_face_bbox_head_batch,  True, "window_" + str(i)))
+        for i in range(5):
+            process = multiprocessing.Process(target=main1, args=(input_path, y5_model, detect_face_bbox_head_batch,  True, "window_" + str(i), "cam_" + str(i)))
             jobs.append(process)
 
         for j in jobs:

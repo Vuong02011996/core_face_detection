@@ -32,9 +32,9 @@ def get_face_features(cam, face_embedding_queue, show_queue):
             data = resp.json()
             for idx in range(len(data["data"])):
                 face_embeddings[index_have_face[idx]] = data["data"][idx]["vec"]
-                print("__________________________________________")
-                print("vector", data["data"][idx]["vec"])
-                print("__________________________________________")
+                # print("__________________________________________")
+                # print("vector", data["data"][idx]["vec"])
+                # print("__________________________________________")
 
         assert len(track_bbs_ids) == face_embeddings.shape[0] == len(boxes_face)
         # print("Reponse cost: ", time.time() - start_time)

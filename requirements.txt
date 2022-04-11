@@ -26,3 +26,4 @@ ffmpeg-python
 imutils
 vidgear
 requests
+posix-ipc

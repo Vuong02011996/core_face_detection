@@ -190,7 +190,7 @@ class SSD(nn.Module):
         face_conf = torch.cat([
             o[:, :, :, :2*mbox_num].contiguous().view(o.size(0), -1)
             for o in conf], dim=1)
-        # Test Phase
+        # Check Phase
         self.priors = self.init_priors(featuremap_size, image_size)
         self.priors = self.priors.to(face_conf.device)
         conf_preds = face_conf.view(

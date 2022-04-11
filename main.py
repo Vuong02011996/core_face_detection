@@ -43,7 +43,7 @@ class InfoCam(object):
         self.show_all = True
 
 
-def main(input_path, y5_model, detect_face_bbox_head_batch, cv2_show=True, name_window=None):
+def main(input_path, detect_face_bbox_head_batch, cv2_show=True, name_window=None):
     start_time = time.time()
     frame_detect_queue = Queue(maxsize=1)
     detections_queue = Queue(maxsize=1)
@@ -57,7 +57,7 @@ def main(input_path, y5_model, detect_face_bbox_head_batch, cv2_show=True, name_
     # -------------------------------------------------------------------------
 
     thread1 = KThread(target=video_capture, args=(cam, frame_detect_queue))
-    thread2 = KThread(target=head_detect, args=(cam, frame_detect_queue, detections_queue, y5_model))
+    thread2 = KThread(target=head_detect, args=(cam, frame_detect_queue, detections_queue))
     thread3 = KThread(target=tracking, args=(cam, detections_queue, show_all_queue, head_bbox_queue))
     thread4 = KThread(target=detect_face_bbox_head, args=(cam, head_bbox_queue, face_embedding_queue, detect_face_bbox_head_batch))
     thread5 = KThread(target=get_face_features, args=(cam, face_embedding_queue, show_queue))
@@ -111,35 +111,6 @@ def main(input_path, y5_model, detect_face_bbox_head_batch, cv2_show=True, name_
 
 
 if __name__ == '__main__':
-    input_path = "/storages/data/DATA/Video_Test/5555_17_3_action1.mp4"
-    # input_path = "/home/vuong/Videos/test_phu.mp4"
+    # input_path = "/storages/data/DATA/Video_Test/5555_17_3_action1.mp4"
+    input_path = "/home/vuong/Videos/test_phu.mp4"
     main(input_path, cv2_show=True, name_window="window2")
-
-    # for i in range(3):
-    #     main(input_path, cv2_show=True, name_window="window" + str(i))
-    # thread_1 = KThread(target=main, args=(input_path, True, "window1"))
-    # thread_2 = KThread(target=main, args=(input_path, True, "window2"))
-    # thread_3 = KThread(target=main, args=(input_path, True, "window3"))
-    # thread_4 = KThread(target=main, args=(input_path, True, "window4"))
-
-    # thread_main = []
-    # thread_1.daemon = True  # sẽ chặn chương trình chính thoát khi thread còn sống.
-    # thread_1.start()
-    # thread_main.append(thread_1)
-
-    # thread_2.daemon = True
-    # thread_2.start()
-    # thread_main.append(thread_2)
-    #
-    # thread_3.daemon = True
-    # thread_3.start()
-    # thread_main.append(thread_3)
-    #
-    # thread_4.daemon = True
-    # thread_4.start()
-    # thread_main.append(thread_4)
-
-    # for t in thread_main:
-    #     if t.is_alive():
-    #         t.terminate()
-    # cv2.destroyAllWindows()

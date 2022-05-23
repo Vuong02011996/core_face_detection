@@ -9,6 +9,7 @@ def get_face_features(cam, face_embedding_queue, show_queue):
     align = True
     while cam.cap.isOpened():
         boxes_face, landmarks_face, frame_rgb, track_bbs_ids, frame_count = face_embedding_queue.get()
+
         face_embeddings = np.zeros((len(boxes_face), 512))
         list_face_base64 = []
         start_time = time.time()

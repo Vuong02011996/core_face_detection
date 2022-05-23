@@ -43,6 +43,9 @@ def video_capture(cam, frame_detect_queue, save_video=False):
         if result is not None:
             result.write(frame_ori)
 
+        if frame_count == 1500:
+            break
+
     cam.cap.release()
     if result is not None:
         result.release()

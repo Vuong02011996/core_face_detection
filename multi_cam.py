@@ -13,11 +13,8 @@ sys.path.append("models_local/face_detection/DSFDPytorchInference")
 from models_local.face_detection.face_test import detect_face_bbox_head_batch
 
 # input_path = '/home/vuong/Videos/test_phu.mp4'
-input_path = "/storages/data/DATA/Video_Test/test_phu.mp4"
-# y5_model = Y5Detect(weights="models_local/head_detection/yolov5_detect/model_head/y5headbody_v2.pt")
-# class_names = y5_model.class_names
-# print(class_names)
-# a =0
+# input_path = "/storages/data/DATA/Video_Test/test_phu.mp4"
+input_path = "rtsp://admin:HikC@mera@58.186.75.67:5563"
 
 
 def mult_cam_3():

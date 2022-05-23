@@ -1,4 +1,4 @@
-Flask==1.1.2
+Flask
 Flask-Cors==3.0.10
 flask-restx==0.5.1
 python-dotenv==0.19.0
@@ -26,4 +26,4 @@ ffmpeg-python
 imutils
 vidgear
 requests
-posix-ipc
+sentry-sdk

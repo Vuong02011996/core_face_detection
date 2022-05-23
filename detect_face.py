@@ -1,3 +1,4 @@
+import os
 import time
 import numpy as np
 import sys
@@ -6,6 +7,8 @@ import cv2
 from main_utils.box_utils import extend_bbox
 # sys.path.append("models_local/face_detection/DSFDPytorchInference")
 # from models_local.face_detection.face_test import detect_face_bbox_head_batch
+
+path_save = "/media/gg_greenlab/storages/data/DATA/Clover_data/image_test/Test_Face_Detect/"
 
 
 def detect_face_bbox_head(cam, head_bbox_queue, face_embedding_queue, detect_face_bbox_head_batch):
@@ -33,7 +36,7 @@ def detect_face_bbox_head(cam, head_bbox_queue, face_embedding_queue, detect_fac
                 image_head = np.zeros((max_size_head, max_size_head, 3), dtype=int)
             else:
                 image_head = cv2.resize(image_head, (max_size_head, max_size_head), interpolation=cv2.INTER_AREA)
-
+            # cv2.imwrite(path_save + str(frame_count) + "_" + str(i) + ".png", image_head)
             image_head = image_head[:, :, ::-1]
             if batch_image_head is None:
                 batch_image_head = image_head[None, :, :, :]
